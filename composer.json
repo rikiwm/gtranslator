@@ -1,0 +1,21 @@
+{
+    "name": "rikimukhraa/gtranslator",
+    "description": "Translate with Google Translate plugin",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "11.3.x-dev"},
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Rikimukhraa\\Gtranslator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "rikiwm",
+            "email": "rikimukhraa@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
