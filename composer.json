@@ -1,5 +1,5 @@
 {
-    "name": "rikimukhraa/gtranslator",
+    "name": "rikiwm/gtranslator",
     "description": "Translate with Google Translate plugin",
     "type": "library",
     "require-dev": {
