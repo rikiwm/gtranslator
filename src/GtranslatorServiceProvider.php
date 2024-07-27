@@ -8,12 +8,10 @@ class GtranslatorServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // Memuat view dari package
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'gtranslator');
-
-        // Mempublikasikan assets
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'gtranslator');
         $this->publishes([
-            __DIR__.'/../resources/js' => public_path('vendor/gtranslator/js'),
+            __DIR__.'/resources/js' => public_path('vendor/gtranslator/js'),
+            __DIR__.'/resources/css' => public_path('vendor/gtranslator/css'),
         ], 'public');
     }
 

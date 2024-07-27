@@ -1,48 +1,13 @@
-function googleTranslateElementInit2() {
-  new google.translate.TranslateElement(
-    {
-      pageLanguage: "id",
-      autoDisplay: false,
-    },
-
-    "google_translate_element2"
+const encodedScript = `ICAgICBmdW5jdGlvbiBnb29nbGVUcmFuc2xhdGVFbGVtZW50SW5pdDIoKSB7CiAgICAgIG5ldyBnb29nbGUudHJhbnNsYXRlLlRyYW5zbGF0ZUVsZW1lbnQoCiAgICAgIHsKICAgICAgIHBhZ2VMYW5ndWFnZTogJ2lkJywKICAgICAgIGF1dG9EaXNwbGF5OiBmYWxzZQogICAgICB9LAogIAogICAgICAnZ29vZ2xlX3RyYW5zbGF0ZV9lbGVtZW50MicpOwogICAgIH0KICAKICAgICBmdW5jdGlvbiBHVHJhbnNsYXRlRmlyZUV2ZW50KGVsZW1lbnQsZXZlbnQpewogICAgICB0cnl7CiAgICAgICBpZihkb2N1bWVudC5jcmVhdGVFdmVudE9iamVjdCl7CiAgICAgICAgdmFyIGV2dD1kb2N1bWVudC5jcmVhdGVFdmVudE9iamVjdCgpOwogICAgICAgIGVsZW1lbnQuZmlyZUV2ZW50KCdvbicrZXZlbnQsZXZ0KQogICAgICAgfSAgIAogICAgICAgZWxzZXsKICAgICAgICB2YXIgZXZ0PWRvY3VtZW50LmNyZWF0ZUV2ZW50KCdIVE1MRXZlbnRzJyk7CiAgICAgICAgZXZ0LmluaXRFdmVudChldmVudCx0cnVlLHRydWUpOwogICAgICAgIGVsZW1lbnQuZGlzcGF0Y2hFdmVudChldnQpCiAgICAgICB9CiAgICAgIH0KICAgICAgY2F0Y2goZSl7fQogICAgIH0KICAKICAgICBmdW5jdGlvbiBkb0dUcmFuc2xhdGUobGFuZ19wYWlyKXsKICAgICAgaWYobGFuZ19wYWlyLnZhbHVlKWxhbmdfcGFpcj1sYW5nX3BhaXIudmFsdWU7CiAgICAgIGlmKGxhbmdfcGFpcj09JycpcmV0dXJuOwogICAgICAgdmFyIGxhbmc9bGFuZ19wYWlyLnNwbGl0KCd8JylbMV07CiAgICAgICB2YXIgdGVDb21ibzsKICAgICAgIHZhciBzZWw9ZG9jdW1lbnQuZ2V0RWxlbWVudHNCeVRhZ05hbWUoJ3NlbGVjdCcpOwogICAgICBmb3IodmFyIGk9MDtpPHNlbC5sZW5ndGg7aSsrKQogICAgICAgaWYoc2VsW2ldLmNsYXNzTmFtZT09J2dvb2ctdGUtY29tYm8nKXRlQ29tYm89c2VsW2ldOwogICAgICAgaWYoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2dvb2dsZV90cmFuc2xhdGVfZWxlbWVudDInKT09bnVsbHx8ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2dvb2dsZV90cmFuc2xhdGVfZWxlbWVudDInKS5pbm5lckhUTUwubGVuZ3RoPT0wfHx0ZUNvbWJvLmxlbmd0aD09MHx8dGVDb21iby5pbm5lckhUTUwubGVuZ3RoPT0wKQogICAgICAgewogICAgICAgIHNldFRpbWVvdXQoZnVuY3Rpb24oKXtkb0dUcmFuc2xhdGUobGFuZ19wYWlyKX0sNTAwKQogICAgICAgfQogICAgICAgZWxzZXsKICAgICAgICB0ZUNvbWJvLnZhbHVlPWxhbmc7R1RyYW5zbGF0ZUZpcmVFdmVudCh0ZUNvbWJvLCdjaGFuZ2UnKTsKICAgICAgICBHVHJhbnNsYXRlRmlyZUV2ZW50KHRlQ29tYm8sJ2NoYW5nZScpCiAgICAgICB9CiAgICAgfQ`;
+function base64Decode(str) {
+  return decodeURIComponent(
+    atob(str)
+      .split("")
+      .map(function (c) {
+        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+      })
+      .join("")
   );
 }
-
-function GTranslateFireEvent(element, event) {
-  try {
-    if (document.createEventObject) {
-      var evt = document.createEventObject();
-      element.fireEvent("on" + event, evt);
-    } else {
-      var evt = document.createEvent("HTMLEvents");
-      evt.initEvent(event, true, true);
-      element.dispatchEvent(evt);
-    }
-  } catch (e) {}
-}
-
-function doGTranslate(lang_pair) {
-  if (lang_pair.value) lang_pair = lang_pair.value;
-  if (lang_pair == "") return;
-  var lang = lang_pair.split("|")[1];
-  var teCombo;
-  var sel = document.getElementsByTagName("select");
-  for (var i = 0; i < sel.length; i++)
-    if (sel[i].className == "goog-te-combo") teCombo = sel[i];
-  if (
-    document.getElementById("google_translate_element2") == null ||
-    document.getElementById("google_translate_element2").innerHTML.length ==
-      0 ||
-    teCombo.length == 0 ||
-    teCombo.innerHTML.length == 0
-  ) {
-    setTimeout(function () {
-      doGTranslate(lang_pair);
-    }, 500);
-  } else {
-    teCombo.value = lang;
-    GTranslateFireEvent(teCombo, "change");
-    GTranslateFireEvent(teCombo, "change");
-  }
-}
+const decodedScript = base64Decode(encodedScript);
+eval(decodedScript);
