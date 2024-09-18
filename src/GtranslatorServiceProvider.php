@@ -13,6 +13,10 @@ class GtranslatorServiceProvider extends ServiceProvider
             __DIR__.'/resources/js' => public_path('vendor/gtranslator/js'),
             __DIR__.'/resources/css' => public_path('vendor/gtranslator/css'),
         ], 'public');
+        $this->publishes([
+            __DIR__.'/resources/config/bahaso.php' => config_path('bahaso.php'),
+        ], 'config');
+        
     }
 
     public function register()
